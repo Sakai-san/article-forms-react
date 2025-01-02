@@ -24,7 +24,7 @@ function App() {
   });
 
   return (
-    <Box component="form" noValidate>
+    <Box component="form" noValidate autoComplete="off">
       <FormProvider {...formContext}>
         <WorkingExperiences />
         <WorkingPermit />
