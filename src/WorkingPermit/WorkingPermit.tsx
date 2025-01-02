@@ -19,7 +19,6 @@ export const WorkingPermit = () => {
           control={control}
           name="hasValidWorkPermit"
           render={({ field, fieldState }) => {
-            console.log("field", field);
             return (
               <FormControl>
                 <FormLabel id="demo-row-radio-buttons-group-label">
