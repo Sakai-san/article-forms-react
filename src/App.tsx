@@ -2,7 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { WorkingExperiences, WorkingExperiencesTypes } from "./WorkingExperiences";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { WorkingPermit, WorkingPermitTypes } from "./WorkingPermit";
@@ -25,8 +25,10 @@ function App() {
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty, isValid },
   } = formContext;
+
+  const handleValidatedSubmit = async (data: Form) => console.log("data", data);
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -35,7 +37,14 @@ function App() {
         <WorkingPermit />
       </FormProvider>
 
-      <LoadingButton type="submit" size="medium" loading={isSubmitting} variant="contained">
+      <LoadingButton
+        type="submit"
+        size="medium"
+        loading={isSubmitting}
+        variant="contained"
+        disabled={isValid && !isDirty}
+        onSubmit={isValid && !isDirty ? () => null : handleSubmit(handleValidatedSubmit)}
+      >
         Submit
       </LoadingButton>
     </Box>
