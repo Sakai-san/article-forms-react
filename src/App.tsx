@@ -42,7 +42,7 @@ function App() {
         size="medium"
         loading={isSubmitting}
         variant="contained"
-        disabled={isValid && !isDirty}
+        disabled={!isValid || isDirty}
         onSubmit={isValid && !isDirty ? () => null : handleSubmit(handleValidatedSubmit)}
       >
         Submit
