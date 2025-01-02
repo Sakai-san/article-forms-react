@@ -38,7 +38,7 @@ function App() {
     // prevents browser default refresh
     e.preventDefault();
 
-    return handleSubmit(handleValidatedSubmit);
+    handleSubmit(handleValidatedSubmit)();
   };
 
   return (
