@@ -23,6 +23,11 @@ function App() {
     mode: "onBlur",
   });
 
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = formContext;
+
   return (
     <Box component="form" noValidate autoComplete="off">
       <FormProvider {...formContext}>
@@ -30,7 +35,7 @@ function App() {
         <WorkingPermit />
       </FormProvider>
 
-      <LoadingButton type="submit" size="medium" loading={loading} variant="contained" {...buttonProps}>
+      <LoadingButton type="submit" size="medium" loading={isSubmitting} variant="contained">
         Submit
       </LoadingButton>
     </Box>
