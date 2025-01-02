@@ -28,7 +28,14 @@ function App() {
     formState: { isSubmitting, isDirty, isValid },
   } = formContext;
 
-  const handleValidatedSubmit = async (data: Form) => console.log("data", data);
+  const handleValidatedSubmit = async (data: Form) => {
+    console.log("data", data);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    return handleSubmit(handleValidatedSubmit);
+  };
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -42,8 +49,8 @@ function App() {
         size="medium"
         loading={isSubmitting}
         variant="contained"
-        disabled={!isValid || isDirty}
-        onSubmit={isValid && !isDirty ? () => null : handleSubmit(handleValidatedSubmit)}
+        //        disabled={!isValid || isDirty}
+        onSubmit={isValid && !isDirty ? () => null : onSubmit}
       >
         Submit
       </LoadingButton>
