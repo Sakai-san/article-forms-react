@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <Box component="form" noValidate autoComplete="off" onSubmit={onSubmit}>
+    <Box component="form" noValidate autoComplete="off" onSubmit={isValid && !isDirty ? () => null : onSubmit}>
       <FormProvider {...formContext}>
         <WorkingExperiences />
         <WorkingPermit />
@@ -53,8 +53,7 @@ function App() {
         size="medium"
         loading={isSubmitting}
         variant="contained"
-        //        disabled={!isValid || isDirty}
-        //        onSubmit={isValid && !isDirty ? () => null : onSubmit}
+        disabled={!isValid || isDirty}
       >
         Submit
       </LoadingButton>
