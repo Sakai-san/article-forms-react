@@ -6,6 +6,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { WorkingExperiences, WorkingExperiencesTypes } from "./WorkingExperiences";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { WorkingPermit, WorkingPermitTypes } from "./WorkingPermit";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Box from "@mui/material/Box";
 
 type Form = WorkingExperiencesTypes.ValidationSchema & WorkingPermitTypes.ValidationSchema;
 
@@ -22,10 +24,16 @@ function App() {
   });
 
   return (
-    <FormProvider {...formContext}>
-      <WorkingExperiences />
-      <WorkingPermit />
-    </FormProvider>
+    <Box component="form" noValidate>
+      <FormProvider {...formContext}>
+        <WorkingExperiences />
+        <WorkingPermit />
+      </FormProvider>
+
+      <LoadingButton type="submit" size="medium" loading={loading} variant="contained" {...buttonProps}>
+        Submit
+      </LoadingButton>
+    </Box>
   );
 
   const [count, setCount] = useState(0);
