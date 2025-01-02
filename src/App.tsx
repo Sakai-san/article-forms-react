@@ -32,7 +32,7 @@ function App() {
     console.log("data", data);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
     // prevents default propagation into third party libraries
     e.stopPropagation();
     // prevents browser default refresh
@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <Box component="form" noValidate autoComplete="off">
+    <Box component="form" noValidate autoComplete="off" onSubmit={onSubmit}>
       <FormProvider {...formContext}>
         <WorkingExperiences />
         <WorkingPermit />
@@ -53,8 +53,8 @@ function App() {
         size="medium"
         loading={isSubmitting}
         variant="contained"
-        disabled={!isValid || isDirty}
-        onSubmit={isValid && !isDirty ? () => null : onSubmit}
+        //        disabled={!isValid || isDirty}
+        //        onSubmit={isValid && !isDirty ? () => null : onSubmit}
       >
         Submit
       </LoadingButton>
