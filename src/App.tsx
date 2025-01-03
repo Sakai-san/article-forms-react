@@ -32,7 +32,7 @@ function App() {
     console.log("data", data);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     // prevents default propagation into third party libraries
     e.stopPropagation();
     // prevents browser default refresh
@@ -53,7 +53,7 @@ function App() {
         size="medium"
         loading={isSubmitting}
         variant="contained"
-        disabled={!(isValid && !isDirty)}
+        disabled={false && !(isValid && !isDirty)}
       >
         Submit
       </LoadingButton>
