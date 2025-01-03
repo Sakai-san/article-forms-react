@@ -18,26 +18,24 @@ export const WorkingPermit = () => {
         <Controller
           control={control}
           name="hasValidWorkPermit"
-          render={({ field, fieldState }) => {
-            return (
-              <FormControl error={Boolean(fieldState.error)} variant="standard">
-                <FormLabel id="demo-row-radio-buttons-group-label">
-                  Do you have a valid visa/work permit for Germany?
-                </FormLabel>
-                <RadioGroup
-                  {...field}
-                  value={field.value ?? ""}
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel value="no" control={<Radio />} label="no" />
-                  <FormControlLabel value="yes" control={<Radio />} label="yes" />
-                </RadioGroup>
-                <FormHelperText>{fieldState.error?.message ?? " "}</FormHelperText>
-              </FormControl>
-            );
-          }}
+          render={({ field, fieldState }) => (
+            <FormControl error={Boolean(fieldState.error)} variant="standard">
+              <FormLabel id="demo-row-radio-buttons-group-label">
+                Do you have a valid visa/work permit for Germany?
+              </FormLabel>
+              <RadioGroup
+                {...field}
+                value={field.value ?? ""}
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel value="no" control={<Radio />} label="no" />
+                <FormControlLabel value="yes" control={<Radio />} label="yes" />
+              </RadioGroup>
+              <FormHelperText>{fieldState.error?.message ?? " "}</FormHelperText>
+            </FormControl>
+          )}
         />
       </Stack>
     </List>
