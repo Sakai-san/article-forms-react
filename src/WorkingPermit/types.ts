@@ -2,22 +2,13 @@ import { z } from "zod";
 
 export const getSchema = () =>
   z.object({
-    hasValidWorkPermit: z.string().refine(
-      (data) => {
-        console.log("data", data, typeof data);
-        if (data === "yes") {
-          return true;
-        } else if (data === "no") {
-          return true;
-        } else {
-          return false;
-        }
-      },
+    hasValidWorkPermit: z
+      .string()
 
-      {
+      .refine((v) => ["yes", "no"].includes(v.toLowerCase()), {
         message: "Please select an option",
-      }
-    ),
+      })
+      .transform((v) => v === "yes"),
   });
 
 export type ValidationSchema = z.infer<ReturnType<typeof getSchema>>;
