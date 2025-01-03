@@ -29,7 +29,7 @@ function App() {
   } = formContext;
 
   const handleValidatedSubmit = async (data: Form) => {
-    console.log("data", data);
+    await console.log("data", data);
   };
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
