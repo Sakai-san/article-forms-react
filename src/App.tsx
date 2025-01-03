@@ -53,7 +53,7 @@ function App() {
         size="medium"
         loading={isSubmitting}
         variant="contained"
-        disabled={false && !(isValid && !isDirty)}
+        disabled={!(isValid && !isDirty)}
       >
         Submit
       </LoadingButton>
