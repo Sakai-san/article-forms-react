@@ -4,7 +4,8 @@ export const getSchema = () =>
   z.object({
     hasValidWorkPermit: z
       .string()
-      .refine((v) => ["yes", "no"].includes(v.toLowerCase()), {
+      .or(z.undefined())
+      .refine((v) => ["yes", "no"].some((radio) => radio === v), {
         message: "Please select an option",
       })
       .transform((v) => v === "yes"),
