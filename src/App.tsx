@@ -26,9 +26,7 @@ function App() {
     formState: { isSubmitting, isDirty, isValid },
   } = formContext;
 
-  const handleValidatedSubmit = async (data: Form) => {
-    await console.log("data", data);
-  };
+  const handleValidatedSubmit = async (data: Form) => console.log("data", data);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
