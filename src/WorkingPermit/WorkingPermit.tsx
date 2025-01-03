@@ -1,6 +1,5 @@
 import { Controller, useFormContext } from "react-hook-form";
 import { WorkingPermitTypes } from ".";
-import { Section } from "../Section";
 import List from "@mui/material/List";
 import Stack from "@mui/material/Stack";
 import FormControl from "@mui/material/FormControl";
@@ -11,7 +10,7 @@ import Radio from "@mui/material/Radio";
 import FormHelperText from "@mui/material/FormHelperText";
 
 export const WorkingPermit = () => {
-  const { control, watch, trigger } = useFormContext<WorkingPermitTypes.ValidationSchema>();
+  const { control } = useFormContext<WorkingPermitTypes.ValidationSchema>();
 
   return (
     <List sx={{ py: 0 }}>
