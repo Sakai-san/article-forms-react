@@ -33,9 +33,6 @@ function App() {
   };
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    // prevents default propagation into third party libraries
-    e.stopPropagation();
-    // prevents browser default refresh
     e.preventDefault();
 
     handleSubmit(handleValidatedSubmit)();
