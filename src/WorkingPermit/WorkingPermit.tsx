@@ -28,7 +28,6 @@ export const WorkingPermit = () => {
                 value={field.value ?? ""}
                 row
                 aria-labelledby="working-permit-radio-buttons-group-label"
-                name="working-permit-radio-buttons-group"
               >
                 <FormControlLabel value="no" control={<Radio />} label="no" />
                 <FormControlLabel value="yes" control={<Radio />} label="yes" />
