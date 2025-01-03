@@ -48,13 +48,7 @@ function App() {
         <WorkingPermit />
       </FormProvider>
 
-      <LoadingButton
-        type="submit"
-        size="medium"
-        loading={isSubmitting}
-        variant="contained"
-        //        disabled={!(isValid && !isDirty)}
-      >
+      <LoadingButton type="submit" size="medium" loading={isSubmitting} variant="contained">
         Submit
       </LoadingButton>
     </Box>
