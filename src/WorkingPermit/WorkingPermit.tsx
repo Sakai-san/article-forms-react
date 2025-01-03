@@ -20,7 +20,7 @@ export const WorkingPermit = () => {
           name="hasValidWorkPermit"
           render={({ field, fieldState }) => {
             return (
-              <FormControl error={Boolean(fieldState.error)}>
+              <FormControl error={Boolean(fieldState.error)} variant="standard">
                 <FormLabel id="demo-row-radio-buttons-group-label">
                   Do you have a valid visa/work permit for Germany?
                 </FormLabel>
