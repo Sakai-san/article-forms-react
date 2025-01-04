@@ -3,17 +3,17 @@ import "./App.css";
 import { FormProvider, useForm } from "react-hook-form";
 import { WorkingExperiences, WorkingExperiencesTypes } from "./WorkingExperiences";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { WorkingPermit, WorkingPermitTypes } from "./WorkingPermit";
+import { WorkingPermit, workingPermitSchema, WorkingPermitSchema } from "./WorkingPermit";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-type Form = WorkingExperiencesTypes.ValidationSchema & WorkingPermitTypes.ValidationSchema;
+type Form = WorkingExperiencesTypes.ValidationSchema & WorkingPermitSchema;
 
 function App() {
   // merge all the misc subforms' validation rules together
-  const formSchema = WorkingExperiencesTypes.getSchema().and(WorkingPermitTypes.getSchema());
+  const formSchema = WorkingExperiencesTypes.getSchema().and(workingPermitSchema());
 
   const formContext = useForm<Form>({
     defaultValues: {

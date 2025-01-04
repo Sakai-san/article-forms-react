@@ -1,5 +1,4 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { WorkingPermitTypes } from ".";
 import List from "@mui/material/List";
 import Stack from "@mui/material/Stack";
 import FormControl from "@mui/material/FormControl";
@@ -9,11 +8,26 @@ import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
 import FormHelperText from "@mui/material/FormHelperText";
 
+import { z } from "zod";
+
+export const workingPermitSchema = () =>
+  z.object({
+    hasValidWorkPermit: z
+      .string()
+      .optional()
+      .refine((v) => ["yes", "no"].some((radio) => radio === v), {
+        message: "Please select an option",
+      })
+      .transform((v) => v === "yes"),
+  });
+
+export type WorkingPermitSchema = z.infer<ReturnType<typeof workingPermitSchema>>;
+
 export const WorkingPermit = () => {
   const {
     control,
     formState: { isSubmitting },
-  } = useFormContext<WorkingPermitTypes.ValidationSchema>();
+  } = useFormContext<WorkingPermitSchema>();
 
   return (
     <List sx={{ py: 0 }}>
