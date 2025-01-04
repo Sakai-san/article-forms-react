@@ -7,6 +7,8 @@ import { WorkingPermit, WorkingPermitTypes } from "./WorkingPermit";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 type Form = WorkingExperiencesTypes.ValidationSchema & WorkingPermitTypes.ValidationSchema;
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
 
   const handleValidatedSubmit = async (data: Form) => console.log("data", data);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    await delay(5000);
     e.preventDefault();
 
     handleSubmit(handleValidatedSubmit)();
