@@ -32,12 +32,10 @@ export const PersonalInformation = () => {
         <Controller
           name="firstname"
           control={control}
-          defaultValue=""
           render={({ field, fieldState }) => (
             <TextField
               label="First name"
               required
-              size="small"
               disabled={isSubmitting}
               helperText={fieldState.error?.message ?? " "}
               error={Boolean(fieldState.error)}

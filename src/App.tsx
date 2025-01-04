@@ -3,19 +3,20 @@ import "./App.css";
 import { FormProvider, useForm } from "react-hook-form";
 import { WorkingExperiences, WorkingExperiencesTypes } from "./WorkingExperiences";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { WorkingPermit, workingPermitSchema, WorkingPermitSchema } from "./WorkingPermit";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
+import { WorkingPermit, workingPermitSchema, WorkingPermitSchema } from "./WorkingPermit";
+import { personalInformationSchema, PersonalInformationSchema, PersonalInformation } from "./PersonalInformation";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-type Form = WorkingExperiencesTypes.ValidationSchema & WorkingPermitSchema;
+type FormData = PersonalInformationSchema & WorkingExperiencesTypes.ValidationSchema & WorkingPermitSchema;
 
 function App() {
   // merge all the misc subforms' validation rules together
-  const formSchema = WorkingExperiencesTypes.getSchema().and(workingPermitSchema());
+  const formSchema = personalInformationSchema().and(WorkingExperiencesTypes.getSchema()).and(workingPermitSchema());
 
-  const formContext = useForm<Form>({
+  const formContext = useForm<FormData>({
     defaultValues: {
       attachments: [],
     },
@@ -28,11 +29,11 @@ function App() {
     formState: { isSubmitting, isDirty, isValid },
   } = formContext;
 
-  const handleValidatedSubmit = async (data: Form) => console.log("data", data);
+  const handleValidatedSubmit = async (data: FormData) => console.log("data", data);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    await delay(5000);
     e.preventDefault();
+    await delay(5000);
 
     handleSubmit(handleValidatedSubmit)();
   };
@@ -40,6 +41,7 @@ function App() {
   return (
     <Box component="form" noValidate autoComplete="off" onSubmit={isValid && !isDirty ? () => null : onSubmit}>
       <FormProvider {...formContext}>
+        <PersonalInformation />
         <WorkingExperiences />
         <WorkingPermit />
       </FormProvider>
