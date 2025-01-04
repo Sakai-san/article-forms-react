@@ -13,9 +13,9 @@ import { TextField } from "@mui/material";
 
 export const personalInformationSchema = () =>
   z.object({
-    firstname: z.string(),
+    firstname: z.string().min(1, "Please provide your first name"),
     lastname: z.string(),
-    email: z.string().email(),
+    email: z.string().email("Email format is invalid"),
   });
 
 export type PersonalInformationSchema = z.infer<ReturnType<typeof personalInformationSchema>>;
@@ -35,11 +35,11 @@ export const PersonalInformation = () => {
           render={({ field, fieldState }) => (
             <TextField
               label="First name"
-              required
               disabled={isSubmitting}
               helperText={fieldState.error?.message ?? " "}
               error={Boolean(fieldState.error)}
               {...field}
+              value={field.value ?? ""}
             />
           )}
         />
