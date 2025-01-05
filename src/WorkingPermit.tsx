@@ -12,7 +12,7 @@ import { z } from "zod";
 export const workingPermitSchema = () =>
   z.object({
     hasValidWorkPermit: z
-      .optional(z.string())
+      .string()
       .refine((value) => ["yes", "no"].some((el) => el === value), { message: "Please select an option" })
       .transform((value) => value === "yes"),
   });
