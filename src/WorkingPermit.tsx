@@ -14,6 +14,7 @@ export const workingPermitSchema = () =>
   z.object({
     hasValidWorkPermit: z
       .string()
+      .optional()
       .refine((v) => ["yes", "no"].some((radio) => radio === v), {
         message: "Please select an option",
       })
