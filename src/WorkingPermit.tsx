@@ -12,6 +12,7 @@ import { z } from "zod";
 
 export const workingPermitSchema = () =>
   z.object({
+    /*
     hasValidWorkPermit: z
       .string()
       .optional()
@@ -19,6 +20,9 @@ export const workingPermitSchema = () =>
         message: "Please select an option",
       })
       .transform((v) => v === "yes"),
+      */
+
+    hasValidWorkPermit: z.boolean({ message: "Please select an option" }),
   });
 
 export type WorkingPermitSchema = z.infer<ReturnType<typeof workingPermitSchema>>;
@@ -35,12 +39,17 @@ export const WorkingPermit = () => {
         <Controller
           control={control}
           name="hasValidWorkPermit"
-          render={({ field, fieldState }) => (
+          render={({ field: { onChange, ...field }, fieldState }) => (
             <FormControl required error={Boolean(fieldState.error)} variant="standard" disabled={isSubmitting}>
               <FormLabel id="working-permit-radio-buttons-group-label">
                 Do you have a valid visa/work permit for Germany?
               </FormLabel>
-              <RadioGroup {...field} row aria-labelledby="working-permit-radio-buttons-group-label">
+              <RadioGroup
+                {...field}
+                onChange={(e) => onChange(e.target.value === "yes")}
+                row
+                aria-labelledby="working-permit-radio-buttons-group-label"
+              >
                 <FormControlLabel value="no" control={<Radio />} label="no" />
                 <FormControlLabel value="yes" control={<Radio />} label="yes" />
               </RadioGroup>
