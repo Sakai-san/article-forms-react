@@ -15,7 +15,7 @@ export const personalInformationSchema = () =>
   z.object({
     firstname: z.string().min(1, "First name is required"),
     lastname: z.string(),
-    email: z.string().email("Email format is invalid"),
+    email: z.string().email("Email is not valid"),
   });
 
 export type PersonalInformationSchema = z.infer<ReturnType<typeof personalInformationSchema>>;
@@ -34,6 +34,7 @@ export const PersonalInformation = () => {
           control={control}
           render={({ field, fieldState }) => (
             <TextField
+              required
               label="First name"
               disabled={isSubmitting}
               helperText={fieldState.error?.message ?? " "}

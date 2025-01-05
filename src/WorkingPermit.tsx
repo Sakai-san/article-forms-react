@@ -36,7 +36,7 @@ export const WorkingPermit = () => {
           control={control}
           name="hasValidWorkPermit"
           render={({ field, fieldState }) => (
-            <FormControl error={Boolean(fieldState.error)} variant="standard" disabled={isSubmitting}>
+            <FormControl required error={Boolean(fieldState.error)} variant="standard" disabled={isSubmitting}>
               <FormLabel id="working-permit-radio-buttons-group-label">
                 Do you have a valid visa/work permit for Germany?
               </FormLabel>
