@@ -20,7 +20,6 @@ function App() {
     defaultValues: {
       firstname: "",
       attachments: [],
-      hasValidWorkPermit: undefined,
     },
     resolver: zodResolver(formSchema),
     mode: "onBlur",
