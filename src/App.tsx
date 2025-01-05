@@ -18,6 +18,7 @@ function App() {
 
   const formContext = useForm<FormData>({
     defaultValues: {
+      firstname: "",
       attachments: [],
     },
     resolver: zodResolver(formSchema),
