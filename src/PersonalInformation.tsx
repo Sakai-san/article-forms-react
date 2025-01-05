@@ -1,8 +1,8 @@
 import { Controller, useFormContext } from "react-hook-form";
 import List from "@mui/material/List";
 import Stack from "@mui/material/Stack";
-import { z } from "zod";
 import { TextField } from "@mui/material";
+import { z } from "zod";
 
 export const personalInformationSchema = () =>
   z.object({
