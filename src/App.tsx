@@ -18,8 +18,9 @@ function App() {
 
   const formContext = useForm<FormData>({
     defaultValues: {
-      firstname: "",
+      firstname: undefined,
       attachments: [],
+      hasValidWorkPermit: undefined,
     },
     resolver: zodResolver(formSchema),
     mode: "onBlur",

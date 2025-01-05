@@ -40,12 +40,7 @@ export const WorkingPermit = () => {
               <FormLabel id="working-permit-radio-buttons-group-label">
                 Do you have a valid visa/work permit for Germany?
               </FormLabel>
-              <RadioGroup
-                {...field}
-                value={field.value ?? ""}
-                row
-                aria-labelledby="working-permit-radio-buttons-group-label"
-              >
+              <RadioGroup {...field} row aria-labelledby="working-permit-radio-buttons-group-label">
                 <FormControlLabel value="no" control={<Radio />} label="no" />
                 <FormControlLabel value="yes" control={<Radio />} label="yes" />
               </RadioGroup>
