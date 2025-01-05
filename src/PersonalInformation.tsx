@@ -7,9 +7,8 @@ import { z } from "zod";
 export const personalInformationSchema = () =>
   z.object({
     firstname: z.string().min(1, "First name is required"),
-    /*     lastname: z.string().min(1, "Last name is required"),
+    lastname: z.string().min(1, "Last name is required"),
     email: z.string().email("Email is not valid"),
- */
   });
 
 export type PersonalInformationSchema = z.infer<ReturnType<typeof personalInformationSchema>>;
