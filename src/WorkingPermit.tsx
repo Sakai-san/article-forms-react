@@ -7,14 +7,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
 import FormHelperText from "@mui/material/FormHelperText";
-
 import { z } from "zod";
 
 export const workingPermitSchema = () =>
   z.object({
-    hasValidWorkPermit: z.string().refine((v) => ["yes", "no"].some((radio) => radio === v), {
-      message: "Please select an option",
-    }),
+    hasValidWorkPermit: z
+      .optional(z.string())
+      .refine((value) => ["yes", "no"].some((el) => el === value), { message: "Please select an option" })
+      .transform((value) => value === "yes"),
   });
 
 export type WorkingPermitSchema = z.infer<ReturnType<typeof workingPermitSchema>>;
@@ -36,7 +36,12 @@ export const WorkingPermit = () => {
               <FormLabel id="working-permit-radio-buttons-group-label">
                 Do you have a valid visa/work permit for Germany?
               </FormLabel>
-              <RadioGroup {...field} row aria-labelledby="working-permit-radio-buttons-group-label">
+              <RadioGroup
+                {...field}
+                value={field.value ?? ""}
+                row
+                aria-labelledby="working-permit-radio-buttons-group-label"
+              >
                 <FormControlLabel value="no" control={<Radio />} label="no" />
                 <FormControlLabel value="yes" control={<Radio />} label="yes" />
               </RadioGroup>
