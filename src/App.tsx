@@ -18,7 +18,7 @@ function App() {
 
   const formContext = useForm<FormData>({
     defaultValues: {
-      firstname: undefined,
+      firstname: "",
       attachments: [],
       hasValidWorkPermit: undefined,
     },
