@@ -27,7 +27,7 @@ export const PersonalInformation = () => {
 
   return (
     <>
-      <h2></h2>
+      <h2>Personal information</h2>
       <List sx={{ py: 0 }}>
         <Stack py={2} gap={1}>
           <Controller

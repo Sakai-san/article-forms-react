@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import "./App.css";
+// import "./App.css";
 import { FormProvider, useForm } from "react-hook-form";
 import { WorkingExperiences, WorkingExperiencesTypes } from "./WorkingExperiences";
 import { zodResolver } from "@hookform/resolvers/zod";
