@@ -7,7 +7,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
 import FormHelperText from "@mui/material/FormHelperText";
-
 import { z } from "zod";
 import { TextField } from "@mui/material";
 
@@ -27,23 +26,26 @@ export const PersonalInformation = () => {
   } = useFormContext<PersonalInformationSchema>();
 
   return (
-    <List sx={{ py: 0 }}>
-      <Stack py={2} gap={1}>
-        <Controller
-          name="firstname"
-          control={control}
-          render={({ field, fieldState }) => (
-            <TextField
-              required
-              label="First name"
-              disabled={isSubmitting}
-              helperText={fieldState.error?.message ?? " "}
-              error={Boolean(fieldState.error)}
-              {...field}
-            />
-          )}
-        />
-      </Stack>
-    </List>
+    <>
+      <h2></h2>
+      <List sx={{ py: 0 }}>
+        <Stack py={2} gap={1}>
+          <Controller
+            name="firstname"
+            control={control}
+            render={({ field, fieldState }) => (
+              <TextField
+                required
+                label="First name"
+                disabled={isSubmitting}
+                helperText={fieldState.error?.message ?? " "}
+                error={Boolean(fieldState.error)}
+                {...field}
+              />
+            )}
+          />
+        </Stack>
+      </List>
+    </>
   );
 };
