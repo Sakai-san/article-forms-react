@@ -13,12 +13,14 @@ type WorkingExperienceProps = {
   onRemove: (order: number) => void;
 };
 
+/*
 const WARNING_FILE_SIZE = 1e8; // 100 MB
 
 const getFileSizeWarning = (hasError: boolean, file?: File) =>
   !hasError && file && file.size > WARNING_FILE_SIZE
     ? "File sizes of more than 100 MB can lead to longer upload times."
     : true;
+ */
 
 export const WorkingExperience: FC<WorkingExperienceProps> = ({ order, file, fileName, onRemove }) => {
   const { control } = useFormContext<WorkingExperiencesTypes.ValidationSchema>();
@@ -31,8 +33,10 @@ export const WorkingExperience: FC<WorkingExperienceProps> = ({ order, file, fil
         name={`attachments.${order}.file`}
         render={({ field, fieldState }) => {
           const hasError = Boolean(fieldState.error);
+          /*
           const resultWarning = getFileSizeWarning(hasError, field.value);
           const warningMessage = typeof resultWarning === "string" ? true : null;
+           */
           return (
             <Stack direction="row" width="100%" gap={2} justifyContent="space-between">
               <Typography noWrap component="p" sx={{ display: "inline-flex", alignItems: "center" }}>
@@ -51,7 +55,8 @@ export const WorkingExperience: FC<WorkingExperienceProps> = ({ order, file, fil
                 </Typography>
               </Typography>
               <Stack>
-                {warningMessage && (
+                {/*
+                warningMessage && (
                   <Tooltip
                     IconProps={{
                       sx: {
@@ -72,7 +77,8 @@ export const WorkingExperience: FC<WorkingExperienceProps> = ({ order, file, fil
                     icon="warning"
                     title={fieldState.error?.message}
                   />
-                )}
+                )
+                  */}
                 <ClickAwayListener onClickAway={() => setShowDeleteTooltip(false)}>
                   <Tooltip
                     open={showDeleteTooltip}

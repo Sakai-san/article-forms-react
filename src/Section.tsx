@@ -10,7 +10,7 @@ export const Section: FC<
     addButton: ReactNode;
   }>
 > = ({ title, icon, children, addButton }) => (
-  <Stack width="100%" sx={(theme) => ({})}>
+  <Stack width="100%">
     <Stack direction="row" p={1.5} justifyContent="space-between">
       <Stack direction="row" gap={(theme) => theme.spacing(1)} pl={3}>
         {icon}
@@ -18,7 +18,7 @@ export const Section: FC<
       </Stack>
       {addButton}
     </Stack>
-    <Divider sx={(theme) => ({})} />
+    <Divider sx={(theme) => ({ color: theme.palette.divider })} />
     {children}
   </Stack>
 );
